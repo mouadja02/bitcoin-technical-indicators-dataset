@@ -1,0 +1,43 @@
+name: Consolidate Bitcoin Data
+
+on:
+  push:
+    paths:
+      - 'btc_ohclv_*.csv'  # Se déclenche seulement quand les fichiers daily sont modifiés
+    branches:
+      - main  # ou votre branche principale
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Pour récupérer tout l'historique
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        pip install pandas
+    
+    - name: Run consolidation script
+      run: |
+        python consolidate_bitcoin_data.py
+    
+    - name: Commit and push updated file
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add btc-hourly-price_2015_2025.csv
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-update consolidated Bitcoin data"
+          git push
+        fi
