@@ -128,5 +128,5 @@ if __name__ == "__main__":
     consolidate_bitcoin_data(
         historical_file=historical_file,
         daily_backups_pattern=pattern,
-        output_file="btc-hourly-price_consolidated.csv"
+        output_file="btc-hourly-price_2015_2025.csv"
     )
