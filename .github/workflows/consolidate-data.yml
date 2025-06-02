@@ -46,5 +46,5 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add btc-hourly-price_2015_2025.csv
-        git commit -m "🤖 Auto-update consolidated Bitcoin data [skip ci]"
+        git commit -m "Auto-update consolidated Bitcoin data"
         git push
