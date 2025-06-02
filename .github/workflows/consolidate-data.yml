@@ -3,9 +3,9 @@ name: Consolidate Bitcoin Data
 on:
   push:
     paths:
-      - 'btc_ohclv_*.csv'  # Se déclenche seulement quand les fichiers daily sont modifiés
+      - 'btc_ohclv_*.csv'  # Se déclenche seulement pour les fichiers daily
     branches:
-      - main  # ou votre branche principale
+      - main  # Changez si votre branche principale a un autre nom
 
 jobs:
   consolidate:
@@ -15,7 +15,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Pour récupérer tout l'historique
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -30,14 +31,20 @@ jobs:
       run: |
         python consolidate_bitcoin_data.py
     
-    - name: Commit and push updated file
+    - name: Check for changes
+      id: verify-changed-files
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add btc-hourly-price_2015_2025.csv
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
+        if git diff --quiet btc-hourly-price_2015_2025.csv; then
+          echo "changed=false" >> $GITHUB_OUTPUT
         else
-          git commit -m "Auto-update consolidated Bitcoin data"
-          git push
+          echo "changed=true" >> $GITHUB_OUTPUT
         fi
+    
+    - name: Commit and push updated file
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add btc-hourly-price_2015_2025.csv
+        git commit -m "🤖 Auto-update consolidated Bitcoin data [skip ci]"
+        git push
