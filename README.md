@@ -4,7 +4,7 @@ This repository maintains Bitcoin hourly price data from 2015 to present, using 
 
 ## Repository Structure
 - `btc-hourly-price_2015_2025.csv`: Complete 10y historical hourly data from November 12, 2014 through May 13, 2025
-- `btc_ohclv_YYYY-MM-DD.csv`: Daily backups of the most recent 24 hours fetched from Snowflake
+- `btc_ohclv_YYYY-MM-DD.csv`: Daily backups of the most recent 24 hours
 - `README.md`: This documentation file
 
 ## Data Structure
@@ -33,7 +33,7 @@ The `btc-hourly-price_2015_2025.csv` file contains the complete historical recor
 ### Daily Updates
 New hourly data is:
 1. Collected from CryptoCompare API
-2. Stored in Snowflake database 
+2. Stored in private Snowflake database 
 3. Backed up daily to this repository as `btc_ohclv_YYYY-MM-DD.csv` files
 
 This approach provides both a complete historical record and daily snapshots of recent price movements.
@@ -46,10 +46,7 @@ The complete historical dataset from 2015-2025 is available in the `btc-hourly-p
 ### Accessing Recent Data
 Daily snapshots of the most recent 24 hours are available in files named `btc_ohclv_YYYY-MM-DD.csv`. Each file contains exactly 24 hours of data.
 
-## Future Plans: Consolidated Historical Data
-
-In a future update, I plan to develop functionality to merge the new daily updates with the historical data to maintain a single comprehensive CSV file. Currently, this is challenging because:
-
+In a future update, I plan to develop functionality to auto merge the new daily updates with the historical data to maintain a single comprehensive CSV file once the dta is backed up from snowflake to github. Currently, this is challenging because:
 1. The historical data file contains over 90,000 lines
 2. Appending data requires reading the entire file and adding content at the end
 3. Managing this process within GitHub's file size limits requires careful handling
@@ -57,30 +54,6 @@ In a future update, I plan to develop functionality to merge the new daily updat
 ### Consolidation Script
 
 In the meantime, you can use 'consolidate_bitcoin_data.py' Python script to combine all data files into a single up-to-date CSV. Run it in the repository directory to create an up-to-date consolidated CSV file containing all historical and new data in chronological order.
-
-## Troubleshooting
-
-### Common Issues
-
-- **"No data returned from Snowflake"**: 
-  - Check your Snowflake connection credentials
-  - Verify that your database, schema, and table names match exactly
-  - Ensure your Snowflake user has appropriate permissions
-
-- **GitHub backup fails**: 
-  - Verify your GitHub credentials and repository permissions
-  - Check that your Personal Access Token hasn't expired
-  - Ensure your repository exists and is accessible
-
-- **API calls failing**:
-  - Verify your CryptoCompare API key is valid
-  - Check if you've hit API rate limits (free tier: 10,000 calls per month)
-  - Try reducing the frequency of calls if needed
-
-- **Missing Telegram notifications**:
-  - Ensure your bot token is valid
-  - Check that your bot is a member of the specified chat
-  - Verify the chat ID is correct
 
 ## License 📄
 This project is licensed under the MIT License - see the LICENSE file for details.
