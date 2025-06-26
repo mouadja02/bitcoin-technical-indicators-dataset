@@ -1,6 +1,6 @@
 # Bitcoin Price Hourly Tracker
 
-This repository maintains Bitcoin hourly price data from 2015 to present, using a combination of historical data files and daily Snowflake backups. The system fetches current data from CryptoCompare, stores it in Snowflake, and creates daily CSV backups on GitHub.
+This repository maintains Bitcoin hourly price data from 2015 to present, using a combination of historical data files and daily backups. A workflow fetches current data from CryptoCompare and stores it in Snowflake, and at the end of the day creates daily CSV backups on GitHub.
 
 ## Repository Structure
 - `btc-hourly-price_2015_2025.csv`: Complete 10y historical hourly data from November 12, 2014 through May 13, 2025
@@ -33,7 +33,7 @@ The `btc-hourly-price_2015_2025.csv` file contains the complete historical recor
 ### Daily Updates
 New hourly data is:
 1. Collected from CryptoCompare API
-2. Stored in private Snowflake database 
+2. Stored in private Snowflake table 
 3. Backed up daily to this repository as `btc_ohclv_YYYY-MM-DD.csv` files
 
 This approach provides both a complete historical record and daily snapshots of recent price movements.
@@ -46,7 +46,7 @@ The complete historical dataset from 2015-2025 is available in the `btc-hourly-p
 ### Accessing Recent Data
 Daily snapshots of the most recent 24 hours are available in files named `btc_ohclv_YYYY-MM-DD.csv`. Each file contains exactly 24 hours of data.
 
-In a future update, I plan to develop functionality to auto merge the new daily updates with the historical data to maintain a single comprehensive CSV file once the dta is backed up from snowflake to github. Currently, this is challenging because:
+In a future update, I plan to develop functionality to auto merge the new daily updates with the historical data to maintain a single comprehensive CSV file once the dta is backed up from  to github. Currently, this is challenging because:
 1. The historical data file contains over 90,000 lines
 2. Appending data requires reading the entire file and adding content at the end
 3. Managing this process within GitHub's file size limits requires careful handling
