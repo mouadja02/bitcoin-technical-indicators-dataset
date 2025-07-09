@@ -1,5 +1,4 @@
 name: Consolidate Bitcoin Data
-
 on:
   push:
     paths:
@@ -40,11 +39,19 @@ jobs:
           echo "changed=true" >> $GITHUB_OUTPUT
         fi
     
+    - name: Delete btc_ohclv_* files
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        # Remove all btc_ohclv_* files
+        rm -f btc_ohclv_*.csv
+        echo "Deleted btc_ohclv_* files"
+    
     - name: Commit and push updated file
       if: steps.verify-changed-files.outputs.changed == 'true'
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add btc-hourly-price_2015_2025.csv
-        git commit -m "Auto-update consolidated Bitcoin data"
+        git add -u  # This stages deleted files
+        git commit -m "Auto-update consolidated Bitcoin data and cleanup daily files"
         git push
