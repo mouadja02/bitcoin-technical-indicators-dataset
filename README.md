@@ -1,9 +1,7 @@
 # Bitcoin Price Hourly Tracker
 
 This repository maintains Bitcoin hourly price data from 2015 to present, using a combination of historical data files and daily backups. A workflow fetches current data from CryptoCompare and stores it in Snowflake, and at the end of the day creates daily CSV backups on GitHub.
-
 Data is collected from CryptoCompare API. 
-
 An advanced version of this dataset is available on: https://www.kaggle.com/datasets/mouadjaouhari/bitcoin-hourly-ohclv-dataset
 
 ## Data Structure
