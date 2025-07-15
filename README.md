@@ -1,8 +1,7 @@
 # Bitcoin Price Hourly Tracker
 
 This repository maintains Bitcoin hourly price data from 2015 to present, using a combination of historical data files and daily backups. A workflow fetches current data from CryptoCompare and stores it in Snowflake, and at the end of the day creates daily CSV backups on GitHub.
- `btc-hourly-price_2015_2025.csv`: Complete 10y historical hourly data (daily updated)
-
+Data is collected from CryptoCompare API
 
 ## Data Structure
 Bitcoin price data is stored with the following schema:
