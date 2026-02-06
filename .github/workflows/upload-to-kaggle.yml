@@ -37,6 +37,12 @@ jobs:
           kaggle datasets list -m --max-size 1 > /dev/null
           echo "Kaggle authentication successful!"
 
+      - name: Prepare upload directory
+        run: |
+          mkdir -p kaggle-upload
+          cp bitcoin-hourly-technical-indicators.csv kaggle-upload/
+          cp dataset-metadata.json kaggle-upload/
+
       - name: Upload dataset to Kaggle
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
@@ -46,10 +52,10 @@ jobs:
           # Check if dataset exists using kaggle datasets status
           if kaggle datasets status "$DATASET_ID" > /dev/null 2>&1; then
             echo "Dataset '$DATASET_ID' exists. Uploading new version..."
-            kaggle datasets version -p . -m "Weekly update: $(date +'%Y-%m-%d')" --dir-mode zip
+            kaggle datasets version -p kaggle-upload -m "Weekly update: $(date +'%Y-%m-%d')" --dir-mode zip
             echo "Dataset version updated successfully!"
           else
             echo "Dataset '$DATASET_ID' does not exist. Creating new dataset..."
-            kaggle datasets create -p . --dir-mode zip
+            kaggle datasets create -p kaggle-upload --dir-mode zip
             echo "Dataset created successfully!"
           fi
