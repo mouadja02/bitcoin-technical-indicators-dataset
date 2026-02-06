@@ -24,18 +24,22 @@ jobs:
         run: pip install kaggle
 
       - name: Configure Kaggle credentials
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
           mkdir -p ~/.kaggle
-          echo "{\"username\":\"$KAGGLE_USERNAME\",\"key\":\"$KAGGLE_KEY\"}" > ~/.kaggle/kaggle.json
+          cat > ~/.kaggle/kaggle.json << 'EOF'
+          {"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}
+          EOF
           chmod 600 ~/.kaggle/kaggle.json
+
+      - name: Validate Kaggle credentials
+        run: |
+          echo "Testing Kaggle authentication..."
+          kaggle datasets list -m --max-size 1 > /dev/null
+          echo "Kaggle authentication successful!"
 
       - name: Upload dataset to Kaggle
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
           DATASET_ID="$KAGGLE_USERNAME/bitcoin-hourly-technical-indicators"
 
