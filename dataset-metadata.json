@@ -1,6 +1,6 @@
 {
-  "title": "Bitcoin Hourly Technical Indicators Dataset",
-  "id": "mouadjaouhari/bitcoin-hourly-technical-indicators",
+  "title": "Bitcoin Hourly OHLCV +Technical Indicators Dataset",
+  "id": "mouadjaouhari/bitcoin-hourly-ohlcv-technical-indicators",
   "licenses": [
     {
       "name": "MIT"
