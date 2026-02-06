@@ -1,0 +1,26 @@
+{
+  "title": "Bitcoin Hourly Technical Indicators Dataset",
+  "id": "mouadjaouhari/bitcoin-hourly-technical-indicators",
+  "licenses": [
+    {
+      "name": "MIT"
+    }
+  ],
+  "keywords": [
+    "bitcoin",
+    "cryptocurrency",
+    "technical analysis",
+    "trading",
+    "finance",
+    "time series",
+    "machine learning",
+    "ohlcv",
+    "indicators"
+  ],
+  "resources": [
+    {
+      "path": "bitcoin-hourly-technical-indicators.csv",
+      "description": "Hourly Bitcoin OHLCV data with 90+ pre-calculated technical indicators including moving averages, momentum indicators, volume indicators, volatility measures, and candlestick patterns."
+    }
+  ]
+}
