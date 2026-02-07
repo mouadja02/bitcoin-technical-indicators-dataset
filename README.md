@@ -34,7 +34,7 @@ This dataset provides **hourly Bitcoin price data** enriched with a comprehensiv
 - **Size**: ~XX MB (varies with historical data)
 - **Update Frequency**: Daily at 00:05 UTC
 
-### Data Columns (98 total)
+### Data Columns
 
 #### 🕐 Time & Price Data (7 columns)
 | Column | Description | Type |
@@ -339,51 +339,6 @@ Trading cryptocurrencies carries substantial risk. Past performance does not gua
 ## 📄 License
 
 This dataset is released under the **MIT License**.
-
----
-
-## 📞 Contact
-
-**Maintainer**: Mouad Jaouhari  
-**GitHub**: [@mouadja02](https://github.com/mouadja02)  
-**Email**: monitor@mj-dev.net 
-
----
-
-## 📈 Dataset Statistics
-
-| Metric | Value |
-|--------|-------|
-| **Total Records** | Updated Daily |
-| **Columns** | 98 |
-| **Time Span** | 2010-Present |
-| **Granularity** | Hourly |
-| **File Size** | ~XX MB |
-| **Last Updated** | ![Last Commit](https://img.shields.io/github/last-commit/mouadja02/bitcoin-technical-indicators-dataset) |
-
----
-
-## 🎯 Roadmap
-
-### Planned Features
-- [ ] Add more candlestick patterns
-- [ ] Include sentiment indicators
-- [ ] Add order book depth data
-- [ ] Provide Parquet format option
-- [ ] Create Jupyter notebook examples
-- [ ] Add data quality report
-
-### Future Enhancements
-- Multi-cryptocurrency support (ETH, BNB, etc.)
-- Minute-level granularity option
-- Real-time streaming data API
-- Pre-trained ML models
-
----
-
-<div align="center">
-
-**Made with ❤️ for the crypto & data science community**
 
 [![GitHub stars](https://img.shields.io/github/stars/mouadja02/bitcoin-technical-indicators-dataset?style=social)](https://github.com/mouadja02/bitcoin-technical-indicators-dataset)
 [![GitHub forks](https://img.shields.io/github/forks/mouadja02/bitcoin-technical-indicators-dataset?style=social)](https://github.com/mouadja02/bitcoin-technical-indicators-dataset)
