@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 
-> A comprehensive, **daily-updated** Bitcoin dataset with OHLCV data and 90+ pre-calculated technical indicators. Perfect for machine learning, algorithmic trading, and financial analysis.
+> A comprehensive, **daily-updated** Bitcoin dataset with OHLCV data and 70+ pre-calculated technical indicators. Perfect for machine learning, algorithmic trading, and financial analysis.
 
 ---
 
@@ -17,7 +17,7 @@ This dataset provides **hourly Bitcoin price data** enriched with a comprehensiv
 
 - 🕐 **Hourly granularity** - Detailed intraday data
 - 🔄 **Daily updates** - Automated at midnight UTC
-- 📊 **90+ indicators** - Moving averages, oscillators, volume, volatility, and more
+- 📊 **70+ indicators** - Moving averages, oscillators, volume, volatility, and more
 - 🎯 **ML-ready** - Clean, structured CSV format
 - 📉 **Historical data** - Complete Bitcoin trading history
 - ⚡ **Production-grade** - Sourced from CryptoCompare API via Snowflake
