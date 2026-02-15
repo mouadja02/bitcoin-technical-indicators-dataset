@@ -1,7 +1,7 @@
 # 📊 Bitcoin Technical Indicators Dataset
 
 [![Update Status](https://img.shields.io/badge/status-daily%20updated-success)](https://github.com/mouadja02/bitcoin-technical-indicators-dataset)
-[![Data Points](https://img.shields.io/badge/data%20points-90%2B%20indicators-blue)](https://github.com/mouadja02/bitcoin-technical-indicators-dataset)
+[![Data Points](https://img.shields.io/badge/data%20points-70%2B%20indicators-blue)](https://github.com/mouadja02/bitcoin-technical-indicators-dataset)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
 
